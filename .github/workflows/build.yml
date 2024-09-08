@@ -52,25 +52,25 @@ jobs:
         with:
           file: "./Dockerfile_e2e_tests"
           push: true
-          tags: kirekov/e2e-tests:${{ env.IMAGE_TAG }}
+          tags: maikhir/e2e-tests:${{ env.IMAGE_TAG }}
       - name: Build and push API-Service
         uses: docker/build-push-action@v3
         with:
           file: "./Dockerfile_api_service"
           push: true
-          tags: kirekov/api-service:${{ env.IMAGE_TAG }}
+          tags: maikhir/api-service:${{ env.IMAGE_TAG }}
       - name: Build and push Gain-Service
         uses: docker/build-push-action@v3
         with:
           file: "./Dockerfile_gain_service"
           push: true
-          tags: kirekov/gain-service:${{ env.IMAGE_TAG }}
+          tags: maikhir/gain-service:${{ env.IMAGE_TAG }}
   e2e-tests:
     needs:
       - build-dev-images
     runs-on: ubuntu-latest
     container:
-      image: kirekov/e2e-tests:${{needs.build-dev-images.outputs.image_tag}}
+      image: maikhir/e2e-tests:${{needs.build-dev-images.outputs.image_tag}}
       volumes:
         - /var/run/docker.sock:/var/run/docker.sock
     steps:
@@ -104,16 +104,16 @@ jobs:
         with:
           file: "./Dockerfile_e2e_tests"
           push: true
-          tags: kirekov/e2e-tests:${{ env.IMAGE_TAG }}
+          tags: maikhir/e2e-tests:${{ env.IMAGE_TAG }}
       - name: Build and push API-Service
         uses: docker/build-push-action@v3
         with:
           file: "./Dockerfile_api_service"
           push: true
-          tags: kirekov/api-service:${{ env.IMAGE_TAG }}
+          tags: maikhir/api-service:${{ env.IMAGE_TAG }}
       - name: Build and push Gain-Service
         uses: docker/build-push-action@v3
         with:
           file: "./Dockerfile_gain_service"
           push: true
-          tags: kirekov/gain-service:${{ env.IMAGE_TAG }}
+          tags: maikhir/gain-service:${{ env.IMAGE_TAG }}
